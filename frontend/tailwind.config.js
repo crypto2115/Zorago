@@ -30,9 +30,6 @@ module.exports = {
         'neon-glow': '0 0 20px rgba(34, 197, 94, 0.5)',
         'neon-glow-lg': '0 0 40px rgba(34, 197, 94, 0.8)',
       },
-      textShadow: {
-        'neon': '0 0 10px rgba(34, 197, 94, 0.8)',
-      },
     },
   },
   plugins: [],
