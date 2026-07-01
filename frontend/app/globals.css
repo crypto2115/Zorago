@@ -15,4 +15,186 @@ html {
 body {
   background-color: #111111;
   color: #ffffff;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* ========== NEON EFFECTS ========== */
+
+/* Neon Glow Text */
+.neon-glow {
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+.neon-glow-lg {
+  text-shadow: 0 0 20px rgba(34, 197, 94, 1), 0 0 40px rgba(34, 197, 94, 0.6);
+}
+
+/* Neon Border */
+.neon-border {
+  border: 2px solid rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.3), inset 0 0 15px rgba(34, 197, 94, 0.1);
+}
+
+.neon-border-lg {
+  border: 2px solid rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.5), inset 0 0 20px rgba(34, 197, 94, 0.15);
+}
+
+/* Gradient Green */
+.gradient-green {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.gradient-green-text {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+}
+
+/* Gradient Green Reverse */
+.gradient-green-reverse {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.8);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-neon-pulse {
+  animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ========== CUSTOM COMPONENTS ========== */
+
+.btn-neon {
+  @apply px-6 py-3 gradient-green text-black font-bold rounded-lg hover:opacity-90 transition neon-glow cursor-pointer;
+}
+
+.btn-neon-outline {
+  @apply px-6 py-3 border-2 border-green-500 text-green-400 font-bold rounded-lg hover:bg-green-600/20 transition cursor-pointer;
+}
+
+.card-neon {
+  @apply neon-border rounded-lg p-6 hover:bg-green-600/5 transition;
+}
+
+.header-neon {
+  @apply border-b border-green-600/20 sticky top-0 bg-black/90 backdrop-blur-md z-50 neon-border;
+}
+
+/* ========== SCROLLBAR ========== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.5), rgba(22, 163, 74, 0.5));
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8));
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  .neon-glow {
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  }
+
+  .btn-neon {
+    @apply px-4 py-2 text-sm;
+  }
 }
