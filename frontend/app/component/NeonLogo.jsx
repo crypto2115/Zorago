@@ -87,7 +87,7 @@ export default function NeonLogo({ size = 'md', animated = true, showText = fals
           className={animated ? 'animate-pulse' : ''}
         />
 
-        {/* LIVE Text (optional) */}
+        {/* LIVE Text */}
         {showText && (
           <text
             x="140"
