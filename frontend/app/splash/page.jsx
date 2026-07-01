@@ -27,7 +27,6 @@ export default function SplashPage() {
 
   return (
     <main className="min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden relative">
-      {/* Animated Background */}
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-black to-black"></div>
         <div
@@ -46,14 +45,11 @@ export default function SplashPage() {
         ></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center gap-8 text-center">
-        {/* Logo */}
-        <div className="mb-8 animate-fadeIn">
+        <div className="mb-8 animate-fadeInUp">
           <NeonLogo size="xl" animated showText={true} />
         </div>
 
-        {/* Title */}
         <div className="mb-4">
           <h1
             className="text-6xl font-bold mb-2"
@@ -70,12 +66,10 @@ export default function SplashPage() {
           <p className="text-xl text-green-400">Global Live Streaming Platform</p>
         </div>
 
-        {/* Tagline */}
         <p className="text-gray-400 text-lg max-w-md mb-12">
           Connect • Stream • Earn
         </p>
 
-        {/* Progress Bar */}
         <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-green-500 to-green-400 transition-all duration-300"
@@ -86,7 +80,6 @@ export default function SplashPage() {
           ></div>
         </div>
 
-        {/* Loading Text */}
         <p className="text-green-400 text-sm mt-4">
           {progress < 30 && 'Loading...'}
           {progress >= 30 && progress < 60 && 'Initializing...'}
@@ -95,13 +88,12 @@ export default function SplashPage() {
         </p>
       </div>
 
-      {/* Animated Stars */}
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
-        @keyframes fadeIn {
+        @keyframes fadeInUp {
           from { opacity: 0; transform: scale(0.8); }
           to { opacity: 1; transform: scale(1); }
         }
