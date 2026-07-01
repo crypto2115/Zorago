@@ -1,103 +1,64 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Profile() {
+  const [activeTab, setActiveTab] = useState('streams')
+  const [followerTab, setFollowerTab] = useState('followers')
+  
   const user = {
+    id: 'sarah_music',
     name: 'Sarah Johnson',
-    bio: 'Music lover & Live streamer 🎵',
+    bio: '🎵 Music lover & Live streamer | 18+ | Ethiopia 🇪🇹',
+    avatar: '👩',
+    coverImage: 'from-pink-600 to-purple-600',
     followers: 2453,
     following: 342,
-    totalEarnings: '$1,245.50',
-    avatar: '👩'
+    totalEarnings: 1245.50,
+    monthlyEarnings: 312.75,
+    totalStreams: 45,
+    totalHours: 187,
+    joinDate: 'Joined January 2024',
+    verified: true,
+    badge: 'Top Creator',
   }
 
-  const streams = [
-    { id: 1, title: 'Music Session', date: '2024-01-15', earnings: '$45.20' },
-    { id: 2, title: 'Acoustic Night', date: '2024-01-14', earnings: '$67.80' },
-    { id: 3, title: 'Cover Songs', date: '2024-01-13', earnings: '$34.50' },
+  const stats = [
+    { label: 'Followers', value: user.followers, icon: '👥', color: 'pink' },
+    { label: 'Following', value: user.following, icon: '➕', color: 'purple' },
+    { label: 'Streams', value: user.totalStreams, icon: '🎥', color: 'blue' },
+    { label: 'Total Hours', value: user.totalHours, icon: '⏱️', color: 'yellow' },
   ]
+
+  const streams = [
+    { id: 1, title: 'Music Session Live', date: '2024-01-15', duration: '2h 15m', earnings: 45.20, viewers: 342 },
+    { id: 2, title: 'Acoustic Night Performance', date: '2024-01-14', duration: '1h 45m', earnings: 67.80, viewers: 456 },
+    { id: 3, title: 'Cover Songs Compilation', date: '2024-01-13', duration: '3h 20m', earnings: 34.50, viewers: 267 },
+    { id: 4, title: 'Live Q&A Session', date: '2024-01-12', duration: '1h 30m', earnings: 28.90, viewers: 189 },
+    { id: 5, title: 'Music Production Tips', date: '2024-01-11', duration: '2h 05m', earnings: 52.15, viewers: 398 },
+  ]
+
+  const followers = [
+    { id: 1, name: 'Emma Wilson', avatar: '👧', verified: false },
+    { id: 2, name: 'Alex Morgan', avatar: '🧑', verified: true },
+    { id: 3, name: 'Jessica Lee', avatar: '👩', verified: false },
+    { id: 4, name: 'David Brown', avatar: '👨', verified: true },
+  ]
+
+  const earningsData = [
+    { day: 'Mon', amount: 45 },
+    { day: 'Tue', amount: 62 },
+    { day: 'Wed', amount: 38 },
+    { day: 'Thu', amount: 75 },
+    { day: 'Fri', amount: 89 },
+    { day: 'Sat', amount: 92 },
+    { day: 'Sun', amount: 71 },
+  ]
+
+  const maxEarnings = Math.max(...earningsData.map(d => d.amount))
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Header */}
-      <header className="border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/">
-            <h1 className="text-3xl font-bold text-pink-500 cursor-pointer">🚀 ZORAGO</h1>
-          </Link>
-          <nav className="flex gap-6">
-            <Link href="/" className="hover:text-pink-400">Home</Link>
-            <Link href="/browse" className="hover:text-pink-400">Browse</Link>
-            <a href="#" className="hover:text-pink-400">Help</a>
-          </nav>
-          <div className="flex gap-3">
-            <button className="px-4 py-2 border border-pink-600 rounded hover:bg-pink-600/20">
-              Logout
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Profile Banner */}
-      <section className="bg-gradient-to-r from-pink-600 to-pink-900 h-32"></section>
-
-      {/* Profile Info */}
-      <section className="max-w-7xl mx-auto px-4 -mt-16 relative z-10">
-        <div className="bg-gray-800/80 rounded-lg p-6 mb-8">
-          <div className="flex items-start gap-6 mb-6">
-            <div className="text-8xl">{user.avatar}</div>
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold mb-2">{user.name}</h1>
-              <p className="text-gray-400 mb-4">{user.bio}</p>
-              <div className="flex gap-8">
-                <div>
-                  <p className="text-2xl font-bold text-pink-400">{user.followers}</p>
-                  <p className="text-gray-400 text-sm">Followers</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-pink-400">{user.following}</p>
-                  <p className="text-gray-400 text-sm">Following</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-green-400">{user.totalEarnings}</p>
-                  <p className="text-gray-400 text-sm">Total Earnings</p>
-                </div>
-              </div>
-            </div>
-            <button className="px-6 py-2 bg-pink-600 rounded hover:bg-pink-700">
-              Edit Profile
-            </button>
-          </div>
-        </div>
-
-        {/* Recent Streams */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Recent Streams</h2>
-          <div className="space-y-4">
-            {streams.map(stream => (
-              <div key={stream.id} className="bg-gray-800/50 p-6 rounded-lg flex justify-between items-center hover:bg-gray-800 transition">
-                <div>
-                  <h3 className="text-xl font-bold">{stream.title}</h3>
-                  <p className="text-gray-400 text-sm">{stream.date}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-green-400 font-bold text-lg">{stream.earnings}</p>
-                  <button className="text-pink-400 hover:text-pink-300 text-sm mt-2">View Stats</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-800 bg-black/50 py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center text-gray-400">
-          <p>&copy; 2024 ZORAGO. All rights reserved.</p>
-          <p className="text-sm mt-2">Built in Addis Ababa 🇪🇹</p>
-        </div>
-      </footer>
-    </main>
-  )
-}
+      <header className="border-b bor
