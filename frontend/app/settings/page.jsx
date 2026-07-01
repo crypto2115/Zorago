@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import NeonLogo from '../components/NeonLogo'
 
 export default function Settings() {
   const [settings, setSettings] = useState({
@@ -12,35 +13,34 @@ export default function Settings() {
   })
 
   const toggleSetting = (key) => {
-    setSettings(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }))
+    setSettings(prev => ({ ...prev, [key]: !prev[key] }))
   }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-      {/* Header */}
-      <header className="border-b border-gray-800 sticky top-0 bg-black/80 backdrop-blur">
+      <header className="header-neon">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/">
-            <h1 className="text-3xl font-bold text-pink-500 cursor-pointer">🚀 ZORAGO</h1>
+            <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition">
+              <div className="w-10 h-10">
+                <NeonLogo size="sm" />
+              </div>
+              <h1 className="text-2xl font-bold gradient-green-text">ZORAGO</h1>
+            </div>
           </Link>
-          <nav className="flex gap-6">
-            <Link href="/" className="hover:text-pink-400">Home</Link>
-            <Link href="/browse" className="hover:text-pink-400">Browse</Link>
-            <a href="#" className="hover:text-pink-400">Help</a>
+          <nav className="hidden md:flex gap-8">
+            <Link href="/" className="text-gray-300 hover:text-green-400 transition">Home</Link>
+            <Link href="/browse" className="text-gray-300 hover:text-green-400 transition">Browse</Link>
+            <Link href="/settings" className="text-green-400 border-b-2 border-green-400 pb-1 font-bold">Help</Link>
           </nav>
         </div>
       </header>
 
-      {/* Settings Container */}
       <section className="max-w-2xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-8">Settings</h1>
+        <h1 className="text-4xl font-bold mb-8 gradient-green-text">Settings</h1>
 
-        {/* Account Section */}
-        <div className="bg-gray-800/50 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Account</h2>
+        <div className="card-neon mb-6">
+          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4 text-green-400">Account</h2>
           
           <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -48,7 +48,7 @@ export default function Settings() {
                 <p className="font-bold">Email Address</p>
                 <p className="text-gray-400 text-sm">sarah@example.com</p>
               </div>
-              <button className="px-4 py-2 border border-pink-600 rounded hover:bg-pink-600/20">
+              <button className="px-4 py-2 neon-border text-green-400 rounded-lg hover:bg-green-600/20 transition">
                 Change
               </button>
             </div>
@@ -58,16 +58,25 @@ export default function Settings() {
                 <p className="font-bold">Password</p>
                 <p className="text-gray-400 text-sm">Last changed 30 days ago</p>
               </div>
-              <button className="px-4 py-2 border border-pink-600 rounded hover:bg-pink-600/20">
+              <button className="px-4 py-2 neon-border text-green-400 rounded-lg hover:bg-green-600/20 transition">
                 Change
+              </button>
+            </div>
+
+            <div className="border-t border-gray-700 pt-6 flex justify-between items-center">
+              <div>
+                <p className="font-bold">Two-Factor Auth</p>
+                <p className="text-gray-400 text-sm">Enhance your security</p>
+              </div>
+              <button className="px-4 py-2 neon-border text-green-400 rounded-lg hover:bg-green-600/20 transition">
+                Enable
               </button>
             </div>
           </div>
         </div>
 
-        {/* Privacy Section */}
-        <div className="bg-gray-800/50 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Privacy</h2>
+        <div className="card-neon mb-6">
+          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4 text-green-400">Privacy</h2>
           
           <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -82,7 +91,7 @@ export default function Settings() {
                   onChange={() => toggleSetting('privateProfile')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
               </label>
             </div>
 
@@ -93,15 +102,14 @@ export default function Settings() {
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" defaultChecked className="sr-only peer" />
-                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
               </label>
             </div>
           </div>
         </div>
 
-        {/* Notifications Section */}
-        <div className="bg-gray-800/50 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Notifications</h2>
+        <div className="card-neon mb-6">
+          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-4 text-green-400">Notifications</h2>
           
           <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -116,7 +124,7 @@ export default function Settings() {
                   onChange={() => toggleSetting('notifications')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
               </label>
             </div>
 
@@ -132,29 +140,27 @@ export default function Settings() {
                   onChange={() => toggleSetting('emailUpdates')}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
               </label>
             </div>
           </div>
         </div>
 
-        {/* Danger Zone */}
-        <div className="bg-red-900/20 border border-red-600/50 rounded-lg p-6">
+        <div className="neon-border rounded-lg p-6 bg-red-900/10">
           <h2 className="text-2xl font-bold mb-6 text-red-400">Danger Zone</h2>
           
           <div className="space-y-4">
-            <button className="w-full px-4 py-3 border border-red-600 rounded text-red-400 hover:bg-red-600/20 transition">
+            <button className="w-full px-4 py-3 border-2 border-red-600 rounded-lg text-red-400 hover:bg-red-600/20 transition font-bold">
               Delete Account
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-800 bg-black/50 py-12 mt-20">
+      <footer className="border-t border-green-600/20 bg-black/80 py-12 mt-20">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-400">
           <p>&copy; 2024 ZORAGO. All rights reserved.</p>
-          <p className="text-sm mt-2">Built in Addis Ababa 🇪🇹</p>
+          <p className="text-sm mt-2 text-green-400/60">Built in Addis Ababa 🇪🇹</p>
         </div>
       </footer>
     </main>
