@@ -20,7 +20,6 @@ body {
 
 /* ========== NEON EFFECTS ========== */
 
-/* Neon Glow Text */
 .neon-glow {
   text-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4);
 }
@@ -29,7 +28,6 @@ body {
   text-shadow: 0 0 20px rgba(34, 197, 94, 1), 0 0 40px rgba(34, 197, 94, 0.6);
 }
 
-/* Neon Border */
 .neon-border {
   border: 2px solid rgba(34, 197, 94, 0.5);
   box-shadow: 0 0 15px rgba(34, 197, 94, 0.3), inset 0 0 15px rgba(34, 197, 94, 0.1);
@@ -40,7 +38,6 @@ body {
   box-shadow: 0 0 25px rgba(34, 197, 94, 0.5), inset 0 0 20px rgba(34, 197, 94, 0.15);
 }
 
-/* Gradient Green */
 .gradient-green {
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
 }
@@ -53,7 +50,6 @@ body {
   filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
 }
 
-/* Gradient Green Reverse */
 .gradient-green-reverse {
   background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
 }
